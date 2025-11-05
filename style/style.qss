@@ -1,0 +1,36 @@
+/*主窗口*/
+MainWindow {
+    /* 背景色 */
+    background-color:rgb(46,47,48);
+}
+
+/*菜单栏文字*/
+QMenuBar{
+    color:rgb(231,231,231);
+    background-color:rgb(46,47,48);
+}
+
+/*菜单上文字*/
+QMenu{
+    color:rgb(231,231,231);
+    background-color:rgb(55,55,55);
+}
+
+/*菜单栏下item*/
+QMenuBar::item:selected {
+        background-color:rgb(80,80,80);
+}
+
+/*菜单选中的效果*/
+QMenu::item:selected {
+    background-color:rgb(39,96,154);
+}
+
+QWizard{
+    color:rgb(231,231,231);
+    background-color:rgb(46,47,48);
+}
+
+QWizard QLabel#tips{
+    color:red;
+}

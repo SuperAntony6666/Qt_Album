@@ -8,3 +8,6 @@ enum TreeItemType{
     TreeItemDir = 2,    //表示项目文件夹
     TreeItemPic = 3,    //表示项目图片
 };
+
+const int PROGRESS_WIDTH = 300;
+const int PROGRESS_MAX = 300;

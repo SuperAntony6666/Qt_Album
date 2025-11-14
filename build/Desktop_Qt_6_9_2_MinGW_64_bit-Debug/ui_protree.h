@@ -14,8 +14,8 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
+#include "protreewidget.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -25,7 +25,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QLabel *ProTree_label;
-    QTreeWidget *ProTree_Widget;
+    ProTreeWidget *ProTree_Widget;
 
     void setupUi(QDialog *ProTree)
     {
@@ -41,7 +41,7 @@ public:
 
         verticalLayout->addWidget(ProTree_label);
 
-        ProTree_Widget = new QTreeWidget(ProTree);
+        ProTree_Widget = new ProTreeWidget(ProTree);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         ProTree_Widget->setHeaderItem(__qtreewidgetitem);

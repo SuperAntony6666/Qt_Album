@@ -38,10 +38,18 @@ template <> constexpr inline auto ProTree::qt_create_metaobjectdata<qt_meta_tag_
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "ProTree"
+        "ProTree",
+        "AddProToTree",
+        "",
+        "name",
+        "path"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'AddProToTree'
+        QtMocHelpers::SlotData<void(const QString, const QString)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::QString, 4 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,10 +71,12 @@ Q_CONSTINIT const QMetaObject ProTree::staticMetaObject = { {
 void ProTree::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<ProTree *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->AddProToTree((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObject *ProTree::metaObject() const
@@ -85,6 +95,18 @@ void *ProTree::qt_metacast(const char *_clname)
 int ProTree::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 1;
+    }
     return _id;
 }
 QT_WARNING_POP

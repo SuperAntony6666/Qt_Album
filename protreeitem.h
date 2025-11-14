@@ -8,8 +8,25 @@ class ProTreeItem : public QTreeWidgetItem
 {
 public:
     ProTreeItem(QTreeWidget* view, const QString& name, const QString& path, int type = Type);
-    PreTreeItem(QTreeWidgetItem *parent, const QString& name, const QString& path,
+    ProTreeItem(QTreeWidgetItem *parent, const QString& name, const QString& path,
                 QTreeWidgetItem *root, int type = Type );
+
+    //获取路径，根，前后节点设置
+    const QString& GetPath();
+    QTreeWidgetItem* GetRoot();
+    void SetPreItem(QTreeWidgetItem *item);
+    void SetNextItem(QTreeWidgetItem *item);
+    ProTreeItem* GetPreItem();
+    ProTreeItem* GetNextItem();
+    ProTreeItem* GetLastPicChild();
+    ProTreeItem* GetFirstPicChild();
+
+private:
+    QString _path;
+    QString _name;
+    QTreeWidgetItem* _root;
+    QTreeWidgetItem* _pre_item;
+    QTreeWidgetItem* _next_item;
 };
 
 #endif // PROTREEITEM_H

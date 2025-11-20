@@ -2,6 +2,8 @@ debug/confirmpage.o
 debug/main.o
 debug/mainwindow.o
 debug/opentreethread.o
+debug/picbutton.o
+debug/picshow.o
 debug/prosetpage.o
 debug/protree.o
 debug/protreeitem.o
@@ -13,6 +15,7 @@ debug/qrc_rc.o
 debug/moc_confirmpage.o
 debug/moc_mainwindow.o
 debug/moc_opentreethread.o
+debug/moc_picshow.o
 debug/moc_prosetpage.o
 debug/moc_protree.o
 debug/moc_protreethread.o

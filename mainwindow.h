@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QResizeEvent>
+#include "picshow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,10 +18,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void ReloadPic();
+
+protected:
+    virtual void resizeEvent(QResizeEvent *event);
 
 private:
     Ui::MainWindow *ui;
     QWidget *_protree;
+    QWidget *_picshow;
 
 private slots:
     void SlotCreatePro(bool);

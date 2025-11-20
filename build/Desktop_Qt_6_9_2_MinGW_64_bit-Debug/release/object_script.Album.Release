@@ -2,6 +2,8 @@ release/confirmpage.o
 release/main.o
 release/mainwindow.o
 release/opentreethread.o
+release/picbutton.o
+release/picshow.o
 release/prosetpage.o
 release/protree.o
 release/protreeitem.o
@@ -13,6 +15,7 @@ release/qrc_rc.o
 release/moc_confirmpage.o
 release/moc_mainwindow.o
 release/moc_opentreethread.o
+release/moc_picshow.o
 release/moc_prosetpage.o
 release/moc_protree.o
 release/moc_protreethread.o

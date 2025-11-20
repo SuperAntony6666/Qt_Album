@@ -8,6 +8,7 @@
 #include "protreewidget.h"
 #include "wizard.h"
 #include "protree.h"
+#include "picshow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -38,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(create_pro, QAction::triggered, this, &MainWindow::SlotCreatePro);
     connect(open_pro, QAction::triggered, this, &MainWindow::SlotOpenPro);
 
+    //左侧区域
     //连接Protree
     _protree = new ProTree();
     ui->pro_Layout->addWidget(_protree);
@@ -46,11 +48,25 @@ MainWindow::MainWindow(QWidget *parent)
     QTreeWidget *tree_widget = dynamic_cast<ProTree*>(_protree)->GetTreeWidget();
     auto *pro_tree_widget = dynamic_cast<ProTreeWidget*>(tree_widget);
     connect(this, &MainWindow::SigOpenPro, pro_tree_widget, &ProTreeWidget::SlotOpenPro);
+
+    //右侧区域
+    _picshow = new PicShow();
+    ui->pic_Layout->addWidget(_picshow);
+    auto *pro_pic_show = dynamic_cast<PicShow*>(_picshow);
+    connect(pro_tree_widget, &ProTreeWidget::SigUpdateSelected, pro_pic_show, &PicShow::SlotSelectedItem);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    auto pro_pic_show = dynamic_cast<PicShow*>(_picshow);
+    pro_pic_show->ReloadPic();
+    QMainWindow::resizeEvent(event);
 }
 
 void MainWindow::SlotCreatePro(bool)

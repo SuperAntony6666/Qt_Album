@@ -25,6 +25,8 @@ ProTreeWidget::ProTreeWidget(QWidget *parent) : QTreeWidget(parent),_active_item
     connect(_action_setstart, &QAction::triggered, this, &ProTreeWidget::SlotSetActive);
     //关闭项目，从目录树中移除
     connect(_action_close, &QAction::triggered, this, &ProTreeWidget::SlotClosePro);
+    //左键显示图像
+    connect(this, &ProTreeWidget::itemDoubleClicked, this, &ProTreeWidget::SlotDoubleClickedItem);
 }
 
 void ProTreeWidget::AddProToTree(const QString &name, const QString &path)
@@ -153,6 +155,7 @@ void ProTreeWidget::SlotImport()
     //取消信号和线程连接
     connect(this, &ProTreeWidget::SigCancelProgress, _thread_create_pro.get(), &ProTreeThread::SlotCancelProgress);
 
+
     _thread_create_pro->start();
     //对话框初始化(固定宽高比)
     _dialog_progress->setWindowTitle("Please Wait...");
@@ -260,6 +263,24 @@ void ProTreeWidget::SlotCancelOpenProgress()
     delete _open_progress_dialog;
     _open_progress_dialog = nullptr;
 }
+
+void ProTreeWidget::SlotDoubleClickedItem(QTreeWidgetItem *doubleItem, int col)
+{
+    if(QGuiApplication::mouseButtons() == Qt::LeftButton){
+        auto *tree_doubleItem = dynamic_cast<ProTreeItem*>(doubleItem);
+        if(!tree_doubleItem){
+            return;
+        }
+        int itemtype = (int)(tree_doubleItem->type());
+        if(itemtype == TreeItemPic){
+            //发送信号给picshow
+            emit SigUpdateSelected(tree_doubleItem->GetPath());
+            _selected_item = doubleItem;
+        }
+    }
+}
+
+
 
 
 

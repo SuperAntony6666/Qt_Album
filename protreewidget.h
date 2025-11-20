@@ -6,6 +6,8 @@
 #include <QHeaderView>
 #include <QAction>
 #include <QProgressDialog>
+#include <QGuiApplication>
+#include "protreeitem.h"
 #include "protreethread.h"
 #include "opentreethread.h"
 
@@ -48,9 +50,12 @@ private slots:
     void SlotFinishOpenProgress();
     void SlotCancelOpenProgress();
 
+    void SlotDoubleClickedItem(QTreeWidgetItem *doubleItem, int col);
+
 signals:
     void SigCancelProgress();
     void SigCancelOpenProgress();
+    void SigUpdateSelected(const QString &);
 };
 
 #endif // PROTREEWIDGET_H

@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    this->setMinimumSize(1629, 869);
     ui->setupUi(this);
     //创建菜单
     QMenu *menu_file = menuBar()->addMenu("文件(&F)");
@@ -54,6 +55,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pic_Layout->addWidget(_picshow);
     auto *pro_pic_show = dynamic_cast<PicShow*>(_picshow);
     connect(pro_tree_widget, &ProTreeWidget::SigUpdateSelected, pro_pic_show, &PicShow::SlotSelectedItem);
+
+    //widget连接前后Btn信号
+    connect(pro_pic_show, &PicShow::SigPreClicked, pro_tree_widget, &ProTreeWidget::SlotPreShow);
+    connect(pro_pic_show, &PicShow::SigNextClicked, pro_tree_widget, &ProTreeWidget::SlotNextShow);
+
+    //按钮更新图片信号
+    connect(pro_tree_widget, &ProTreeWidget::SigUpdatePic, pro_pic_show, &PicShow::SlotUpdatePic);
+    connect(pro_tree_widget, &ProTreeWidget::SigClearSelected, pro_pic_show, &PicShow::SlotDeleteItem);
 }
 
 MainWindow::~MainWindow()

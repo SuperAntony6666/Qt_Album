@@ -43,8 +43,12 @@ template <> constexpr inline auto ProTreeWidget::qt_create_metaobjectdata<qt_met
         "",
         "SigCancelOpenProgress",
         "SigUpdateSelected",
+        "SigUpdatePic",
+        "SigClearSelected",
         "SlotOpenPro",
         "path",
+        "SlotPreShow",
+        "SlotNextShow",
         "SlotItemPressed",
         "QTreeWidgetItem*",
         "pressedItem",
@@ -73,39 +77,49 @@ template <> constexpr inline auto ProTreeWidget::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SignalData<void(const QString &)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 2 },
         }}),
-        // Slot 'SlotOpenPro'
-        QtMocHelpers::SlotData<void(const QString &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 6 },
+        // Signal 'SigUpdatePic'
+        QtMocHelpers::SignalData<void(const QString &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 2 },
         }}),
+        // Signal 'SigClearSelected'
+        QtMocHelpers::SignalData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'SlotOpenPro'
+        QtMocHelpers::SlotData<void(const QString &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 8 },
+        }}),
+        // Slot 'SlotPreShow'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'SlotNextShow'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'SlotItemPressed'
-        QtMocHelpers::SlotData<void(QTreeWidgetItem *, int)>(7, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 8, 9 }, { QMetaType::Int, 10 },
+        QtMocHelpers::SlotData<void(QTreeWidgetItem *, int)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 12, 13 }, { QMetaType::Int, 14 },
         }}),
         // Slot 'SlotImport'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'SlotUpdateProgress'
-        QtMocHelpers::SlotData<void(int)>(12, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 13 },
+        QtMocHelpers::SlotData<void(int)>(16, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 17 },
         }}),
         // Slot 'SlotFinishProgress'
-        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'SlotCancelProgress'
-        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'SlotSetActive'
-        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'SlotClosePro'
-        QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(21, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'SlotUpdateOpenProgress'
-        QtMocHelpers::SlotData<void(int)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 13 },
+        QtMocHelpers::SlotData<void(int)>(22, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 17 },
         }}),
         // Slot 'SlotFinishOpenProgress'
-        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'SlotCancelOpenProgress'
-        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'SlotDoubleClickedItem'
-        QtMocHelpers::SlotData<void(QTreeWidgetItem *, int)>(21, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 8, 22 }, { QMetaType::Int, 23 },
+        QtMocHelpers::SlotData<void(QTreeWidgetItem *, int)>(25, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 12, 26 }, { QMetaType::Int, 27 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -133,18 +147,22 @@ void ProTreeWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 0: _t->SigCancelProgress(); break;
         case 1: _t->SigCancelOpenProgress(); break;
         case 2: _t->SigUpdateSelected((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 3: _t->SlotOpenPro((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 4: _t->SlotItemPressed((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 5: _t->SlotImport(); break;
-        case 6: _t->SlotUpdateProgress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 7: _t->SlotFinishProgress(); break;
-        case 8: _t->SlotCancelProgress(); break;
-        case 9: _t->SlotSetActive(); break;
-        case 10: _t->SlotClosePro(); break;
-        case 11: _t->SlotUpdateOpenProgress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 12: _t->SlotFinishOpenProgress(); break;
-        case 13: _t->SlotCancelOpenProgress(); break;
-        case 14: _t->SlotDoubleClickedItem((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 3: _t->SigUpdatePic((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 4: _t->SigClearSelected(); break;
+        case 5: _t->SlotOpenPro((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 6: _t->SlotPreShow(); break;
+        case 7: _t->SlotNextShow(); break;
+        case 8: _t->SlotItemPressed((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 9: _t->SlotImport(); break;
+        case 10: _t->SlotUpdateProgress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 11: _t->SlotFinishProgress(); break;
+        case 12: _t->SlotCancelProgress(); break;
+        case 13: _t->SlotSetActive(); break;
+        case 14: _t->SlotClosePro(); break;
+        case 15: _t->SlotUpdateOpenProgress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 16: _t->SlotFinishOpenProgress(); break;
+        case 17: _t->SlotCancelOpenProgress(); break;
+        case 18: _t->SlotDoubleClickedItem((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         default: ;
         }
     }
@@ -154,6 +172,10 @@ void ProTreeWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         if (QtMocHelpers::indexOfMethod<void (ProTreeWidget::*)()>(_a, &ProTreeWidget::SigCancelOpenProgress, 1))
             return;
         if (QtMocHelpers::indexOfMethod<void (ProTreeWidget::*)(const QString & )>(_a, &ProTreeWidget::SigUpdateSelected, 2))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ProTreeWidget::*)(const QString & )>(_a, &ProTreeWidget::SigUpdatePic, 3))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ProTreeWidget::*)()>(_a, &ProTreeWidget::SigClearSelected, 4))
             return;
     }
 }
@@ -177,14 +199,14 @@ int ProTreeWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 19;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 19)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 15;
+        _id -= 19;
     }
     return _id;
 }
@@ -205,5 +227,17 @@ void ProTreeWidget::SigCancelOpenProgress()
 void ProTreeWidget::SigUpdateSelected(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
+}
+
+// SIGNAL 3
+void ProTreeWidget::SigUpdatePic(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
+}
+
+// SIGNAL 4
+void ProTreeWidget::SigClearSelected()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
 }
 QT_WARNING_POP

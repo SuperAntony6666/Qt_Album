@@ -19,6 +19,7 @@ class PicShow : public QDialog
 public:
     explicit PicShow(QWidget *parent = nullptr);
     ~PicShow();
+    void ReloadPic();
 
 
 protected:
@@ -35,6 +36,12 @@ private:
 
 public slots:
     void SlotSelectedItem(const QString &path);
+    void SlotUpdatePic(const QString &path);
+    void SlotDeleteItem();
+
+signals:
+    void SigPreClicked();
+    void SigNextClicked();
 };
 
 #endif // PICSHOW_H

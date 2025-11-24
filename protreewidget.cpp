@@ -90,6 +90,35 @@ void ProTreeWidget::SlotOpenPro(const QString &path)
     _open_progress_dialog->exec();
 }
 
+void ProTreeWidget::SlotPreShow()
+{
+    if(!_selected_item){
+        return;
+    }
+    //获取前一个节点
+    auto * curItem = dynamic_cast<ProTreeItem*>(_selected_item)->GetPreItem();
+    if(!curItem){
+        return;
+    }
+    emit SigUpdatePic(curItem->GetPath());
+    _selected_item = curItem;
+    this->setCurrentItem(curItem);
+}
+
+void ProTreeWidget::SlotNextShow()
+{
+    if(!_selected_item){
+        return;
+    }
+    auto * curItem = dynamic_cast<ProTreeItem*>(_selected_item)->GetNextItem();
+    if(!curItem){
+        return;
+    }
+    emit SigUpdatePic(curItem->GetPath());
+    _selected_item = curItem;
+    this->setCurrentItem(curItem);
+}
+
 
 void ProTreeWidget::SlotItemPressed(QTreeWidgetItem *pressedItem, int column)
 {
@@ -222,7 +251,7 @@ void ProTreeWidget::SlotClosePro()
     //获取widget中的索引,以及当前条目,获取删除路径
     auto index_right_btn = this->indexOfTopLevelItem(_right_btn_item);
     auto *protreeitem = dynamic_cast<ProTreeItem*>(_right_btn_item);
-    auto *select_path = dynamic_cast<ProTreeItem*>(_selected_item);
+    auto *selected_item = dynamic_cast<ProTreeItem*>(_selected_item);
     auto delete_path = protreeitem->GetPath();
     _set_path.remove(delete_path);
     if(b_removed){
@@ -232,6 +261,13 @@ void ProTreeWidget::SlotClosePro()
     //如果删除条目和当前激活条目是同一个
     if(protreeitem == _active_item){
         _active_item = nullptr;
+    }
+
+    //关闭项目时，通知右侧显示部分(但仍在缓存中显示)
+    if(selected_item && protreeitem == selected_item->GetRoot()){
+        selected_item = nullptr;
+        _selected_item = nullptr;
+        emit SigClearSelected();
     }
 
     delete this->takeTopLevelItem(index_right_btn);

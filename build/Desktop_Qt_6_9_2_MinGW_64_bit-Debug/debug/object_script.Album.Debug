@@ -4,12 +4,14 @@ debug/mainwindow.o
 debug/opentreethread.o
 debug/picbutton.o
 debug/picshow.o
+debug/picstatebtn.o
 debug/prosetpage.o
 debug/protree.o
 debug/protreeitem.o
 debug/protreethread.o
 debug/protreewidget.o
 debug/removeprodialog.o
+debug/slideshowdialog.o
 debug/wizard.o
 debug/qrc_rc.o
 debug/moc_confirmpage.o
@@ -21,4 +23,5 @@ debug/moc_protree.o
 debug/moc_protreethread.o
 debug/moc_protreewidget.o
 debug/moc_removeprodialog.o
+debug/moc_slideshowdialog.o
 debug/moc_wizard.o

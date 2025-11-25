@@ -8,6 +8,7 @@
 #include "const.h"
 #include "protreeitem.h"
 #include "removeprodialog.h"
+#include "slideshowdialog.h"
 
 
 ProTreeWidget::ProTreeWidget(QWidget *parent) : QTreeWidget(parent),_active_item(nullptr), _right_btn_item(nullptr),
@@ -27,6 +28,9 @@ ProTreeWidget::ProTreeWidget(QWidget *parent) : QTreeWidget(parent),_active_item
     connect(_action_close, &QAction::triggered, this, &ProTreeWidget::SlotClosePro);
     //左键显示图像
     connect(this, &ProTreeWidget::itemDoubleClicked, this, &ProTreeWidget::SlotDoubleClickedItem);
+
+    //轮播图
+    connect(_action_slideshow, &QAction::triggered, this, &ProTreeWidget::SlotSlideShow);
 }
 
 void ProTreeWidget::AddProToTree(const QString &name, const QString &path)
@@ -314,6 +318,30 @@ void ProTreeWidget::SlotDoubleClickedItem(QTreeWidgetItem *doubleItem, int col)
             _selected_item = doubleItem;
         }
     }
+}
+
+void ProTreeWidget::SlotSlideShow()
+{
+    if(!_right_btn_item){
+
+    }
+    auto *right_pro_item = dynamic_cast<ProTreeItem*>(_right_btn_item);
+    auto *last_child_item = right_pro_item->GetLastPicChild();
+    if(!last_child_item){
+        return;
+    }
+
+    auto *first_child_item = right_pro_item->GetFirstPicChild();
+    if(!first_child_item){
+        return;
+    }
+
+    qDebug() << "first pic child is " << right_pro_item->GetFirstPicChild()->GetPath();
+    qDebug() << "last pic child is " << right_pro_item->GetLastPicChild()->GetPath();
+
+    _slide_show_dlg = std::make_shared<SlideShowDialog>(this, first_child_item, last_child_item);
+    _slide_show_dlg->setModal(true);
+    _slide_show_dlg->showMaximized();
 }
 
 

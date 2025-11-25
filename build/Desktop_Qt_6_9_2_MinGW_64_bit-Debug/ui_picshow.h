@@ -18,7 +18,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "picbutton.h"
+#include <picbutton.h>
 
 QT_BEGIN_NAMESPACE
 

@@ -6,10 +6,10 @@ PicShow::PicShow(QWidget *parent)
     , ui(new Ui::PicShow)
 {
     ui->setupUi(this);
-    ui->PreBtn->SetIcon(":/icon/previous.png",
+    ui->PreBtn->SetIcons(":/icon/previous.png",
                         ":/icon/previous_hover.png",
                         ":/icon/previous_press.png");
-    ui->NextBtn->SetIcon(":/icon/next.png",
+    ui->NextBtn->SetIcons(":/icon/next.png",
                          ":/icon/next_hover.png",
                          ":/icon/next_press.png");
 

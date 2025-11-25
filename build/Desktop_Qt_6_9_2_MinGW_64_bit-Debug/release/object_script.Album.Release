@@ -4,12 +4,14 @@ release/mainwindow.o
 release/opentreethread.o
 release/picbutton.o
 release/picshow.o
+release/picstatebtn.o
 release/prosetpage.o
 release/protree.o
 release/protreeitem.o
 release/protreethread.o
 release/protreewidget.o
 release/removeprodialog.o
+release/slideshowdialog.o
 release/wizard.o
 release/qrc_rc.o
 release/moc_confirmpage.o
@@ -21,4 +23,5 @@ release/moc_protree.o
 release/moc_protreethread.o
 release/moc_protreewidget.o
 release/moc_removeprodialog.o
+release/moc_slideshowdialog.o
 release/moc_wizard.o

@@ -83,6 +83,42 @@ PicShow {
 }
 
 /*取消Btn的边框*/
-#PreBtn, #NextBtn{
+#PreBtn, #NextBtn, #slidePreBtn, #slideNextBtn, #CloseBtn, #PlayBtn{
     border: 0px;
+}
+
+/*slideshow*/
+SlideShowDialog {
+    color:rgb(231,231,231);
+    background-color:rgb(46,47,48);
+}
+
+#PrelistWidget {
+    color:rgb(231,231,231);
+    background-color:rgb(46,47,48);
+    border: 0px;
+}
+
+#PrelistWidget::item:hover {
+    background:rgb(38,95,153);
+}
+
+#PrelistWidget::item:selected {
+    background:rgb(38, 95, 153);
+}
+
+#slidePrewid{
+    margin-left: 10px;
+}
+
+#slideNextwid{
+    margin-right: 10px;
+}
+
+#PrelistWidget::item:selected:active{
+    border: 2px solid #ffffff;
+}
+
+#PrelistWidget::item:selected{
+    border: 2px solid #ffffff;
 }

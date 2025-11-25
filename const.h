@@ -9,5 +9,15 @@ enum TreeItemType{
     TreeItemPic = 3,    //表示项目图片
 };
 
+enum PicBtnState{
+    PicBtnStateNormal = 1,
+    PicBtnStateHover = 2,
+    PicBtnStatePressed = 3,
+
+    PicBtnStateStopNormal = 4,
+    PicBtnStateStopHover = 5,
+    PicBtnStateStopPressed = 6
+};
+
 const int PROGRESS_WIDTH = 300;
 const int PROGRESS_MAX = 300;

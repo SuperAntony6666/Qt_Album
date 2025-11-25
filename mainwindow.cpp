@@ -63,6 +63,8 @@ MainWindow::MainWindow(QWidget *parent)
     //按钮更新图片信号
     connect(pro_tree_widget, &ProTreeWidget::SigUpdatePic, pro_pic_show, &PicShow::SlotUpdatePic);
     connect(pro_tree_widget, &ProTreeWidget::SigClearSelected, pro_pic_show, &PicShow::SlotDeleteItem);
+
+
 }
 
 MainWindow::~MainWindow()

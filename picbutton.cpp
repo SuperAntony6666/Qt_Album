@@ -4,7 +4,7 @@ PicButton::PicButton(QWidget* parent) {
 
 }
 
-void PicButton::SetIcon(const QString &normal, const QString &hover, const QString &pressed)
+void PicButton::SetIcons(const QString &normal, const QString &hover, const QString &pressed)
 {
     //添加到类成员
     _normal = normal;

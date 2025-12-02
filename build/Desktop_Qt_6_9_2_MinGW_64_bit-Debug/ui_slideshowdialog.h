@@ -17,6 +17,7 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <picanimationwid.h>
 #include <picbutton.h>
 #include <picstatebtn.h>
 
@@ -31,7 +32,7 @@ public:
     QWidget *slidePrewid;
     QVBoxLayout *verticalLayout_3;
     PicButton *slidePreBtn;
-    QWidget *picAnimation;
+    PicAnimationWid *picAnimation;
     QHBoxLayout *horizontalLayout_2;
     PicStateBtn *PlayBtn;
     PicButton *CloseBtn;
@@ -68,7 +69,7 @@ public:
 
         gridLayout->addWidget(slidePrewid, 1, 0, 1, 1);
 
-        picAnimation = new QWidget(SlideShow);
+        picAnimation = new PicAnimationWid(SlideShow);
         picAnimation->setObjectName("picAnimation");
 
         gridLayout->addWidget(picAnimation, 1, 1, 1, 1);

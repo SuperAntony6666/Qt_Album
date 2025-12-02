@@ -10,8 +10,18 @@ public:
     PicStateBtn(QWidget* parent = nullptr);
     void SetIcons(const QString& normal, const QString& hover, const QString& pressed,
                     const QString& normal_stop, const QString& hover_stop, const QString& pressed_stop);
+    virtual ~PicStateBtn(){}
+
+protected:
+    bool event(QEvent *e) override;
 
 private:
+    void SetNormalIcon();
+    void SetHoverIcon();
+    void SetPressedIcon();
+    void SetNormalStopIcon();
+    void SetHoverStopIcon();
+    void SetPressedStopIcon();
     QString _normal;
     QString _hover;
     QString _pressed;

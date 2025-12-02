@@ -22,6 +22,9 @@ SlideShowDialog::SlideShowDialog(QWidget *parent, QTreeWidgetItem *first_item, Q
                 ":/icon/pause.png",
                 ":/icon/pause_hover.png",
                 ":/icon/pause_press.png");
+
+    ui->picAnimation->SetPixmap(_first_item);
+    ui->picAnimation->Start();
 }
 
 

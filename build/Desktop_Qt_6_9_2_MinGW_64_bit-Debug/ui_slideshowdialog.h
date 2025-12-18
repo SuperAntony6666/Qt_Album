@@ -14,12 +14,12 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include <picanimationwid.h>
 #include <picbutton.h>
 #include <picstatebtn.h>
+#include <prelistwid.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -42,7 +42,7 @@ public:
     QWidget *PreShow;
     QHBoxLayout *horizontalLayout;
     QWidget *widget;
-    QListWidget *PrelistWidget;
+    PreListWid *PrelistWidget;
 
     void setupUi(QDialog *SlideShowDialog)
     {
@@ -114,11 +114,12 @@ public:
         widget->setObjectName("widget");
         widget->setMinimumSize(QSize(0, 120));
         widget->setMaximumSize(QSize(16777215, 120));
-        PrelistWidget = new QListWidget(widget);
+        PrelistWidget = new PreListWid(widget);
         PrelistWidget->setObjectName("PrelistWidget");
         PrelistWidget->setGeometry(QRect(10, 10, 16777215, 110));
         PrelistWidget->setMinimumSize(QSize(0, 110));
         PrelistWidget->setMaximumSize(QSize(16777215, 110));
+        PrelistWidget->setFlow(QListView::Flow::LeftToRight);
 
         horizontalLayout->addWidget(widget);
 

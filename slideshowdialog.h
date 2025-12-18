@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QTreeWidgetItem>
+#include "prelistwid.h"
 
 namespace Ui {
 class SlideShowDialog;

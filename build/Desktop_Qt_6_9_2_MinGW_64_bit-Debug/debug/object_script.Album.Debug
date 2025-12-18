@@ -6,6 +6,8 @@ debug/picanimationwid.o
 debug/picbutton.o
 debug/picshow.o
 debug/picstatebtn.o
+debug/prelistitem.o
+debug/prelistwid.o
 debug/prosetpage.o
 debug/protree.o
 debug/protreeitem.o

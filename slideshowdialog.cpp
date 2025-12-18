@@ -23,8 +23,15 @@ SlideShowDialog::SlideShowDialog(QWidget *parent, QTreeWidgetItem *first_item, Q
                 ":/icon/pause_hover.png",
                 ":/icon/pause_press.png");
 
+    auto *prelistWid = dynamic_cast<PreListWid*>(ui->PrelistWidget);
+    connect(ui->picAnimation, &PicAnimationWid::SigUpPreList, prelistWid, &PreListWid::SlotUpPreList);
+    connect(ui->picAnimation, &PicAnimationWid::SigUpSelectItem, prelistWid, &PreListWid::SlotUpSelectItem);
+
     ui->picAnimation->SetPixmap(_first_item);
     ui->picAnimation->Start();
+
+
+
 }
 
 

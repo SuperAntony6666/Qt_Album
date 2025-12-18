@@ -31,6 +31,10 @@ private:
 
 private slots:
     void TimeOut();
+
+signals:
+    void SigUpPreList(QTreeWidgetItem* );
+    void SigUpSelectItem(QTreeWidgetItem* );
 };
 
 #endif // PICANIMATIONWID_H

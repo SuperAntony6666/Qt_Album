@@ -6,6 +6,8 @@ release/picanimationwid.o
 release/picbutton.o
 release/picshow.o
 release/picstatebtn.o
+release/prelistitem.o
+release/prelistwid.o
 release/prosetpage.o
 release/protree.o
 release/protreeitem.o

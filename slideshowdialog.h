@@ -21,6 +21,10 @@ private:
     Ui::SlideShowDialog *ui;
     QTreeWidgetItem *_first_item;
     QTreeWidgetItem *_last_item;
+
+public slots:
+    void SlotSlidePre();
+    void SlotSlideNext();
 };
 
 #endif // SLIDESHOWDIALOG_H

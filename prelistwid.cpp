@@ -1,3 +1,4 @@
+#include <QGuiApplication>
 #include "prelistwid.h"
 #include "const.h"
 #include "protreeitem.h"
@@ -8,7 +9,7 @@ PreListWid::PreListWid(QWidget* parent) : QListWidget(parent), _global(0), _last
     this->setViewMode(QListWidget::IconMode);
     this->setIconSize(QSize(PREICON_SIZE, PREICON_SIZE));
     this->setSpacing(5);
-    // connect(this, &PreListWid::itemPressed, this, &PreListWid::SlotItemPressed);
+    connect(this, &PreListWid::itemPressed, this, &PreListWid::SlotItemPressed);
 
 }
 
@@ -88,4 +89,16 @@ void PreListWid::SlotUpSelectItem(QTreeWidgetItem *tree_item)
         _last_index = 17;
     }
     this->setCurrentItem(iter.value());
+}
+
+void PreListWid::SlotItemPressed(QListWidgetItem *item)
+{
+    if(QGuiApplication::mouseButtons() != Qt::LeftButton){
+        return;
+    }
+    auto *list_item = dynamic_cast<PreListItem*> (item);
+    auto cur_index = list_item->GetIndex();
+    auto path = list_item->GetPath();
+    this->setCurrentItem(item);
+    emit SigUpSelectShow(path);
 }

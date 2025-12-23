@@ -7,6 +7,8 @@
 #include <QAction>
 #include <QProgressDialog>
 #include <QGuiApplication>
+#include <QtMultimedia/QMediaPlayer>
+// #include <QtMultimedia/QMediaPlaylist>
 #include "protreeitem.h"
 #include "protreethread.h"
 #include "opentreethread.h"
@@ -36,11 +38,18 @@ private:
     std::shared_ptr<ProTreeThread> _thread_create_pro;
     std::shared_ptr<OpenTreeThread> _thread_open_pro;
     std::shared_ptr<SlideShowDialog> _slide_show_dlg;
+    //音乐播放类
+    QMediaPlayer *_player;
+    // QMediaPlayerList *_playlist;
+    QList<QUrl> _playlist;
 
 public slots:
     void SlotOpenPro(const QString &path);
     void SlotPreShow();
     void SlotNextShow();
+    void SlotSetMusic();
+    void SlotStartMusic();
+    void SlotStopMusic();
 
 private slots:
     void SlotItemPressed(QTreeWidgetItem *pressedItem, int column);

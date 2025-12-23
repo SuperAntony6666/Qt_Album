@@ -22,6 +22,7 @@ debug/moc_mainwindow.o
 debug/moc_opentreethread.o
 debug/moc_picanimationwid.o
 debug/moc_picshow.o
+debug/moc_prelistwid.o
 debug/moc_prosetpage.o
 debug/moc_protree.o
 debug/moc_protreethread.o

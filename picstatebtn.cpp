@@ -72,6 +72,16 @@ void PicStateBtn::SetPressedStopIcon()
     _cur_state = PicBtnStateStopPressed;
 }
 
+void PicStateBtn::SlotStart()
+{
+    SetNormalIcon();
+}
+
+void PicStateBtn::SlotStop()
+{
+    SetNormalStopIcon();
+}
+
 
 
 bool PicStateBtn::event(QEvent *event){

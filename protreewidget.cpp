@@ -31,6 +31,8 @@ ProTreeWidget::ProTreeWidget(QWidget *parent) : QTreeWidget(parent),_active_item
 
     //轮播图
     connect(_action_slideshow, &QAction::triggered, this, &ProTreeWidget::SlotSlideShow);
+
+    _player = new QMediaPlayer(this);
 }
 
 void ProTreeWidget::AddProToTree(const QString &name, const QString &path)
@@ -121,6 +123,44 @@ void ProTreeWidget::SlotNextShow()
     emit SigUpdatePic(curItem->GetPath());
     _selected_item = curItem;
     this->setCurrentItem(curItem);
+}
+
+void ProTreeWidget::SlotSetMusic()
+{
+    QFileDialog file_dialog;
+    file_dialog.setFileMode(QFileDialog::ExistingFiles);
+    file_dialog.setWindowTitle("选择导入的文件");
+
+    file_dialog.setDirectory(QDir::currentPath());
+    file_dialog.setViewMode(QFileDialog::Detail);
+    file_dialog.setNameFilter("(*.mp3)");
+
+    QStringList fileNames;
+    if(file_dialog.exec()){
+        fileNames = file_dialog.selectedFiles();
+    }
+    if(fileNames.length() <= 0){
+        return;
+    }
+    _playlist.clear();
+    for(auto filename : fileNames){
+        qDebug() << "filename is" << filename;
+        _playlist.append(QUrl::fromLocalFile(filename));
+    }
+
+    if(_player->mediaStatus() != QMediaPlayer::PlayingState){
+        _player->setSource(_playlist.at(0));
+    }
+}
+
+void ProTreeWidget::SlotStartMusic()
+{
+    _player->play();
+}
+
+void ProTreeWidget::SlotStopMusic()
+{
+    _player->stop();
 }
 
 

@@ -16,6 +16,8 @@ public:
     void SetPixmap(QTreeWidgetItem* item);
     void Start();
     void Stop();
+    void SlidePre();
+    void SlideNext();
 
 protected:
     virtual void paintEvent(QPaintEvent *event);
@@ -28,6 +30,11 @@ private:
     QTreeWidgetItem* _cur_item;
     QMap<QString, QTreeWidgetItem*> _map_item;
     bool _b_start;
+    void UpSelectPixmap(QTreeWidgetItem *item);
+
+public slots:
+    void SlotUpSelectShow(QString path);
+    void SlotStartorStop();
 
 private slots:
     void TimeOut();
@@ -35,6 +42,10 @@ private slots:
 signals:
     void SigUpPreList(QTreeWidgetItem* );
     void SigUpSelectItem(QTreeWidgetItem* );
+    void SigStart();
+    void SigStop();
+    void SigStartMusic();
+    void SigStopMusic();
 };
 
 #endif // PICANIMATIONWID_H
